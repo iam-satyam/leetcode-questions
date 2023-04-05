@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minimizeArrayValue(vector<int>& nums) {
+        long sum = 0;
+        int n = nums.size();
+        long ans = INT_MIN;
+        for(int i=0; i<n; i++){
+            sum =sum+ nums[i];
+            ans = max(ans, (sum+i)/(i+1));
+        }
+        return ans;
+        
+
+        
+    }
+};
