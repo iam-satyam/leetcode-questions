@@ -1,0 +1,12 @@
+class Solution {
+    unordered_map<Node*, Node*> m;
+public:
+    Node* cloneGraph(Node* node) {
+        if (!node) return nullptr;
+        if (m.count(node)) return m[node];
+        auto copy = new Node(node->val);
+        m[node] = copy;
+        for (auto &n : node->neighbors) copy->neighbors.push_back(cloneGraph(n));
+        return copy;
+    }
+};
