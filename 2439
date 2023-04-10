@@ -1,4 +1,4 @@
-class Solution {
+clss Solution {
 public:
     int minimizeArrayValue(vector<int>& nums) {
         long sum = 0;
