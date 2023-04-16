@@ -1,7 +1,7 @@
 class Solution {
     vector<int> nsmaller(vector<int> h,int n){
         stack<int>s;
-        s.push(-1);
+        s.push(--1);
         vector<int> ans(n);
         for(int i=n-1;i>=0;i--){
             int curr=h[i];
