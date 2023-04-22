@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        queue<char> q;
+        unordered_map<char,int> cnt;
+         unordered_map<char,int> cpt;
+
+        for(int i=0;i<s.length();i++){
+            char ch=s[i];
+            cpt[ch]=i;
+            cnt[ch]++;
+            q.push(ch);
+
+        }
+        while(!q.empty()){
+            if(cnt[q.front()]==1){
+                return cpt[q.front()];
+
+            }
+            q.pop();
+        }
+
+        return -1;
+        
+    }
+};
