@@ -1,4 +1,4 @@
-class Find {
+Class Find {
     vector<int> id;
 public:
     Find(int N) : id(N) {
