@@ -1,0 +1,24 @@
+class Solution {
+    int height(TreeNode* root){
+        if(root == NULL) return 0;
+        int lefty=height(root->left);
+        int rigfy=height(root->right);
+        int ans=max(lefty,rigfy)+1;
+        return ans;
+
+    }
+public:
+    bool isBalanced(TreeNode* root) {
+        if(root == NULL) return true;
+        bool lefy=isBalanced(root->left);
+        bool rify=isBalanced(root->right);
+       int hep= abs(height(root->left)-height(root->right));
+       if(lefy && rify && (hep<=1) ){
+           return true;
+       }
+       else {
+           return false;
+           }
+
+    }
+};
