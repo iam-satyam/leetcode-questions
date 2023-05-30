@@ -1,0 +1,30 @@
+class Solution {
+public:
+void solve(TreeNode* root,int target ,vector<int>  rt,bool &ans){
+    if (root==NULL ) {
+         
+         return;
+    }
+     rt.push_back(root->val);
+     solve(root->left,target,rt,ans);
+      solve(root->right,target,rt,ans);
+     int size=rt.size();
+     int sum=0;
+     for(int i=0;i<size;i++){
+         sum+=rt[i];
+     }
+     if(sum==target){
+     if(root->left==NULL && root->right==NULL) 
+      ans=true;
+      }
+
+     
+
+}
+    bool hasPathSum(TreeNode* root, int target) {
+       vector<int> rt;
+        bool ans=false;
+       solve(root,target,rt,ans);
+       return ans;
+    }
+};
