@@ -1,0 +1,18 @@
+class Solution
+{ 
+    int solve(Node* root,int k,vector<int>&ans){
+        if(root==NULL ) return -1;
+        int left =solve(root->left,k,ans);
+        if(left!=-1) return left;
+        ans.push_back(root->data);
+        return solve(root->right,k,ans);
+    }
+    public:
+    int kthLargest(Node *root, int K)
+    {
+      vector<int>ans;
+      solve(root,K,ans);
+      int n=ans.size();
+      return  ans[n-K];
+    }
+};
