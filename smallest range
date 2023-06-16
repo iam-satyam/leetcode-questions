@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+class node{
+    public:
+    int data;
+    int row;
+    int col;
+    node(int d,int r,int c){
+        data=d;
+        row=r;
+        col=c;
+
+    }
+};
+class compare{
+    public:
+    bool operator()(node*a , node*b)
+    {
+        return a->data > b->data;
+    }
+};
+
+
+class Solution {
+public:
+    vector<int> smallestRange(vector<vector<int>>& nums) {
+        priority_queue<node*,vector<node*>,compare > q;
+        int mini=INT_MAX;
+        int maxi=INT_MIN;
+        vector<int> p;
+        
+        for(int i=0;i<nums.size();i++){
+            p.push_back(nums[i].size());
+            int ele=nums[i][0];
+            maxi=max(maxi,ele);
+             mini=min(mini,ele);
+            q.push(new node(ele,i,0));
+        }
+        int start=mini;
+        int end=maxi;
+        
+        while(!q.empty()){
+            node* temp=q.top();
+            q.pop();
+            mini=temp->data;
+             if(maxi-mini < end-start){
+                start=mini;
+                end=maxi;
+            }
+            if(temp->col+1 < p[temp->row]){
+                maxi=max(maxi,nums[temp->row][temp->col+1]);
+        q.push(new node(nums[temp->row][temp->col+1],temp->row,temp->col+1));
+
+            }
+            else{
+                delete temp;
+                break;
+                }
+
+
+
+        }
+        vector<int> ans={start,end};
+        return ans;
+
+        
+    }
+};
