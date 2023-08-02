@@ -1,4 +1,4 @@
-class Solution {
+c]lass Solution {
     int height(TreeNode* root){
         if(root == NULL) return 0;
         int lefty=height(root->left);
